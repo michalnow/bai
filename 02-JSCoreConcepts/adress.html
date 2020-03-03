@@ -1,0 +1,95 @@
+<html>
+  <body>
+    <script>
+      title = "dr";
+      name = "Mateusz";
+      surname = "Kubicki";
+      street = "Długa 15";
+      city = "Kraków";
+      zip = "30-781";
+      country = "Poland";
+      console.log(title + " " + name + " " + surname);
+      console.log("ul." + street);
+      console.log(zip + " " + city);
+      console.log(country);
+      console.log("//////////////");
+      console.log(
+        title +
+          " " +
+          name +
+          " " +
+          surname +
+          "\nul. " +
+          street +
+          "\n" +
+          zip +
+          " " +
+          city +
+          "\n" +
+          country
+      );
+      console.log("HERON HERON");
+      b = 4;
+      c = 5;
+      h = 7;
+
+      // Pole trókąta o bokach ..., ... oraz ... wynosi ... .
+
+      let triangleArea = () => {
+        let p = (b + c + h) / 2;
+        return Math.sqrt(p * (p - b) * (p - c) * (p - h));
+      };
+
+      console.log("triangle area = " + triangleArea());
+
+      console.log("LOOOOOOOOPSSS");
+      let i = 2;
+      while (i <= 14) {
+        console.log(i);
+        i += 4;
+      }
+
+      for (let i = 2; i < 15; i += 4) console.log(i);
+
+      console.log("CAAAARRRSSS");
+      function isCar(car1, car2, car3) {
+        return car1 && car2 && car3 ? true : false;
+      }
+
+      console.log(isCar(true, true, true));
+      console.log(isCar(false, false, false));
+      console.log(isCar(true, true, false));
+      console.log(isCar(false, false, true));
+      console.log(isCar(true, false, true));
+
+      console.log("TRAPEZIUM");
+      let trapezeArea = (a, b, h) => {
+        return ((a + b) * h) / 2;
+      };
+
+      console.log("trapeze Area  = " + trapezeArea(2, 5, 4));
+
+      console.log("ORDERING");
+      const sort = function(arr) {
+        sortedArr = arr.sort();
+        return sortedArr;
+      };
+
+      const even = function(arr) {
+        let arrEven = [];
+        arr.map(element => (element % 2 == 0 ? arrEven.push(element) : ""));
+        return arrEven;
+      };
+
+      numbers = [8, 3, 2, 1, 5, 4, 6];
+      console.log(sort(numbers));
+      console.log(even(numbers));
+
+      console.log("Math array");
+      let array = new Array(10).map(e => {
+        Math.floor(5 + Math.random() * 15);
+      });
+      console.log(array);
+    </script>
+  </body>
+</html>
