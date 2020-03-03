@@ -86,9 +86,9 @@
       console.log(even(numbers));
 
       console.log("Math array");
-      let array = new Array(10).map(e => {
-        Math.floor(5 + Math.random() * 15);
-      });
+      let array = new Array(10)
+        .fill()
+        .map(() => Math.floor(5 + Math.random() * 16));
       console.log(array);
     </script>
   </body>
