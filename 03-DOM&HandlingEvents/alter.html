@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Pink Floyd</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
-		We don't need no thought control<br>
-		No dark sarcasm in the classroom<br>
-		Teachers leave them kids alone<br>
-		Hey! Teachers! Leave them kids alone<br>
-		All in all it's just another brick in the wall<br>
-		All in all you're just another brick in the wall</p>
-		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
-		They achieved international acclaim with their progressive<br>
-		and psychedelic music.</p>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-	</body>
+  <head>
+    <title>Pink Floyd</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body ondblclick="changeBgColor(this)">
+    <h1 onclick="onTitleClick(this)">Another Brick in the Wall</h1>
+    <h3 onclick="showDesc()">Pink Floyd</h3>
+    <p onclick="makeItalics(this)" oncopy="onCopy()">
+      We don't need no education<br />
+      We don't need no thought control<br />
+      No dark sarcasm in the classroom<br />
+      Teachers leave them kids alone<br />
+      Hey! Teachers! Leave them kids alone<br />
+      All in all it's just another brick in the wall<br />
+      All in all you're just another brick in the wall
+    </p>
+
+    <p style="visibility: hidden;" onclick="showImg(this)">
+      Pink Floyd were an English rock band formed in London.<br />
+      They achieved international acclaim with their progressive<br />
+      and psychedelic music.
+    </p>
+
+    <script>
+      var abc = 0;
+      function onTitleClick(e) {
+        if (abc !== 1) {
+          const title = e.innerHTML + " Part 2";
+          console.log(title);
+          e.innerHTML = title;
+          abc++;
+        }
+      }
+
+      function showDesc() {
+        desc = document.getElementsByTagName("p")[1].style.visibility =
+          "visible";
+      }
+
+      function makeItalics(e) {
+        e.style.fontStyle = "italic";
+      }
+
+      function changeBgColor(e) {
+        e.style.backgroundColor = "yellow";
+      }
+
+      function onCopy() {
+        window.prompt("COPYRIGHTS");
+      }
+
+      function showImg(e) {
+        e.innerHTML +=
+          "<br\><img src='https://upload.wikimedia.org/wikipedia/en/thumb/d/d6/Pink_Floyd_-_all_members.jpg/250px-Pink_Floyd_-_all_members.jpg' />";
+      }
+    </script>
+  </body>
 </html>
