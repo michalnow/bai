@@ -22,10 +22,22 @@
       Jak głaz bodzący morze, reduta Ordona.
     </p>
 
-    <textarea rows="15" cols="50"></textarea><br />
-
+    <textarea rows="15" cols="50" oninput="timer(this)" ></textarea><br />
+    <p id="stats" />
     <script>
-      // a JavaScript code here ...
+        function timer(e){
+            var words = null;
+            var chars = null;
+            setTimeout(function(){
+                words = e.value.split(" ").length;
+                chars = e.value.length
+                e.disabled = "true"
+                let p = document.getElementById("stats")
+                p.innerText = "words = " + words + "\ncharacters = " + chars;
+                console.log(words)
+            }, 3000)
+        }
+
     </script>
   </body>
 </html>

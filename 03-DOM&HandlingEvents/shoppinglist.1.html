@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping List</title>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  </head>
+
+  <body>
+    <h1>Shopping List</h1>
+    <p>
+      New item: <input type="text" name="item" />
+      <button type="button" onclick="onClick()">Add</button>
+    </p>
+    <h3>List of items</h3>
+    <ol>
+      <li>cooking oil</li>
+      <li>breakfast cereal</li>
+      <li>bread</li>
+    </ol>
+
+    <script>
+        $(document).on("dblclick", 'li', function() {
+        $(this).remove();
+    });
+
+      function onClick() {  
+        item = document.getElementsByTagName("input")[0].value;
+        const ol = document.getElementsByTagName("ol")[0];
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(item));
+        ol.appendChild(li);
+      }
+    </script>
+  </body>
+</html>
