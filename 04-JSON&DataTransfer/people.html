@@ -7,12 +7,13 @@
   <body>
     <h1>Student</h1>
     <p>Open a console and then click the button</p>
-    <input type="button" value="Display student's data" onclick="show()" />
+    <input type="button" value="Display students data" onclick="show()" />
     <p id="personalData"></p>
 
     <script>
+      var flag = false;
       function show() {
-        fetch("personalData.json")
+        fetch("people.json")
           .then(function(response) {
             if (response.status !== 200) {
               console.log(
@@ -24,8 +25,23 @@
 
             // Examine the text in the response
             response.json().then(function(data) {
-              document.getElementById("personalData").innerText =
-                data.name + " " + data.surname;
+              let count = 1;
+              console.log(data);
+              if (!flag) {
+                flag = true;
+                data.map(person => {
+                  document.getElementById("personalData").innerText +=
+                    count +
+                    ". " +
+                    person.name +
+                    " " +
+                    person.surname.toUpperCase() +
+                    ", " +
+                    person.country +
+                    "\n";
+                  count++;
+                });
+              }
             });
           })
           .catch(function(err) {

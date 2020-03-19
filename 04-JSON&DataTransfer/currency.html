@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Currency</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>Currenct</h1>
+    <input
+      type="button"
+      value="Display current exchanges rates"
+      onclick="show()"
+    />
+    <p id="currency" style="white-space: pre-wrap;"></p>
+
+    <script>
+      function show() {
+        fetch("http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json")
+          .then(function(response) {
+            if (response.status !== 200) {
+              console.log(
+                "Looks like there was a problem. Status Code: " +
+                  response.status
+              );
+              return;
+            }
+
+            // Examine the text in the response
+            response.json().then(function(data) {
+              let currencyData = "";
+              data[0].rates.map(curr => {
+                switch (curr.code) {
+                  case "USD":
+                    currencyData +=
+                      curr.currency +
+                      " - " +
+                      curr.code +
+                      "\nexchange rate = " +
+                      curr.mid +
+                      "\n\n";
+                    break;
+                  case "GBP":
+                    currencyData +=
+                      curr.currency +
+                      " - " +
+                      curr.code +
+                      "\nexchange rate = " +
+                      curr.mid +
+                      "\n\n";
+                    break;
+                  case "EUR":
+                    currencyData +=
+                      curr.currency +
+                      " - " +
+                      curr.code +
+                      "\nexchange rate = " +
+                      curr.mid +
+                      "\n\n";
+                    break;
+                }
+                document.getElementById("currency").innerText = currencyData;
+              });
+            });
+          })
+          .catch(function(err) {
+            console.log("Fetch Error :-S", err);
+          });
+      }
+    </script>
+  </body>
+</html>
