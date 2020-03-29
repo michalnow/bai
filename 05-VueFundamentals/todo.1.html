@@ -7,7 +7,7 @@
     <div id="app">
       <h4>Do WYKONANIA</h4>
       <ol>
-        <li v-for="(td, idx) in todo">{{ todo[idx] }}</li>
+        <li v-for="(td, idx) in alpSort">{{ todo[idx] }}</li>
       </ol>
     </div>
     <script>
@@ -20,6 +20,11 @@
             "Pay cable bill",
             "Go shopping"
           ]
+        },
+        computed: {
+          alpSort: function() {
+            return this.todo.sort();
+          }
         }
       });
     </script>

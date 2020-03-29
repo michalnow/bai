@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <h1>Education</h1>
+    <div id="app">
+      <p>{{ abc }}</p>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          grades: [5, 2, 3, 4, 5, 6, 2, 3, 3, 4]
+        },
+        computed: {
+          abc: function() {
+            let str = "";
+            let sum = 0;
+            this.grades.map(gr => {
+              str += gr + " ";
+              sum += gr;
+            });
+
+            return (
+              "Student's grades: " +
+              str +
+              "\n" +
+              "Average grade: " +
+              sum / this.grades.length
+            );
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

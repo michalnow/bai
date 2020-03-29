@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <table style="border: solid 1px; border-collapse: collapse">
+        <thead style="border: solid 1px">
+          <th style="border: solid 1px; "><h5>Currenct</h5></th>
+          <th style="border: solid 1px; "><h5>Code</h5></th>
+          <th style="border: solid 1px; "><h5>mid</h5></th>
+        </thead>
+        <tr style="border: solid 1px; " v-for="cur in currency">
+          <td style="border: solid 1px; ">{{ cur.currency }}</td>
+          <td style="border: solid 1px; ">{{ cur.code }}</td>
+          <td style="border: solid 1px; ">{{ cur.mid }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          currency: []
+        },
+        created() {
+          let items = [];
+          fetch("http://api.nbp.pl/api/exchangerates/tables/a/")
+            .then(function(response) {
+              if (response.status !== 200) {
+                console.log(
+                  "Looks like there was a problem. Status Code: " +
+                    response.status
+                );
+                return;
+              }
+
+              // Examine the text in the response
+              response.json().then(function(data) {
+                console.log(data[0]);
+                data[0].rates.map(cur => {
+                  console.log(cur);
+                  items.push(cur);
+                });
+              });
+            })
+            .catch(function(err) {
+              console.log("Fetch Error :-S", err);
+            });
+
+          this.currency = items;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
-        pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
-    });
-  </script>
+  </head>
+  <body>
+    <div id="app">
+      <h4>EMPLOYEE RECORD</h4>
+      <div v-for="employee in employess">
+        <h5>Name1: {{ employee.name1 }}</h5>
+        <h5 v-if="employee.name2 != ''">Name2: {{ employee.name2 }}</h5>
+        <h5>Surname: {{ employee.surname }}</h5>
+        <h5 v-if="employee.nationality = 'Polish'">
+          Pesel: {{ employee.pesel }}
+        </h5>
+        <h5 v-else>Nationality: {{ employee.nationality }}</h5>
+        <h5>Address: {{ employee.address }}</h5>
+        <h5>----------------------------</h5>
+      </div>
+    </div>
 
-</body>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          employess: [
+            {
+              name1: "Adam",
+              name2: "Jan",
+              surname: "Majewski",
+              foreigner: false,
+              nationality: "Polish",
+              pesel: "92021708229",
+              address: "ul. Szeroka 3, Kraków"
+            },
+            {
+              name1: "John",
+              name2: "",
+              surname: "Brown",
+              foreigner: false,
+              nationality: "American",
+              pesel: "",
+              address: "Holland Drive4, Chicago"
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
 </html>
