@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <span>name:</span>
+    <input type="text" v-model="person.name"> 
+    <br></br> 
+    <span>surnname:</span>
+    <input type="text" v-model="person.surname">
+    <br></br>  
+    <span>sex:</span>
+    <select v-model="person.sex">
+        <option disabled value="">Please select one</option>
+        <option>female</option>
+        <option>male</option>
+      </select>
+      <br></br>
+      <span>degree:</span>
+    <select v-model="person.degree">
+        <option disabled value="">Please select one</option>
+        <option>brak</option>
+        <option>podstawowe</option>
+        <option>srednie</option>
+        <option>wyzsze</option>
+      </select>
+      <br></br>
+      <span>skills:</span>
+      <select v-model="person.skills">
+        <option disabled value="">Please select one</option>
+        <option>obsluga komputera</option>
+        <option>prawo jazdy</option>
+        <option>kreatywnosc</option>
+        <option>praca w zespole</option>
+      </select>
+    <br></br>
+    <button v-on:click="read">read data</button> 
+    <button v-on:click="save">save</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        person: {
+            name: "",
+            surname: "",
+            sex: "",
+            degree: "",
+            skills: ""
+
+        }
+      },
+      methods: {
+        save: function(){
+          localStorage.setItem('name', this.person.name)
+          localStorage.setItem('surname', this.person.surname)
+          localStorage.setItem('sex', this.person.sex)
+          localStorage.setItem('degree', this.person.degree)
+          localStorage.setItem('skills', this.person.skills)
+ 
+        },
+        read: function(){
+ 
+            this.person.name = localStorage.getItem('name')
+            this.person.surname = localStorage.getItem('surname')
+            this.person.sex = localStorage.getItem('sex')
+            this.person.degree = localStorage.getItem('degree')
+            this.person.skills = localStorage.getItem('skills')
+
+
+        }   
+      }
+    });
+  </script>
+
+</body>
+</html>

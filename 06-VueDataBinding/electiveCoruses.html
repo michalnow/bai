@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Body Mass Index</h1>
+  <div id="app">
+      <form>
+        <span>Matematyka </span>
+        <input type="checkbox" id="a" value="a" v-model="checked"><br>
+        <span>Przyroda </span>
+        <input type="checkbox" id="b" value="b" v-model="checked"><br>
+        <span>Geografia </span>
+        <input type="checkbox" id="c" value="c" v-model="checked"><br>
+        <span>Literatura </span>
+        <input type="checkbox" id="d" value="d" v-model="checked"><br>
+        <span>Chemia </span>
+        <input type="checkbox" id="e" value="e" v-model="checked"><br>
+    </form>
+    <p v-if="this.checked.length != 0">You checked: {{show}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        checked: []
+      },
+      computed: {
+          show: function() {
+              return this.checked.length
+          }
+      }
+    });
+  </script>
+
+</body>
+</html>
