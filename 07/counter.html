@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <Counter></Counter>
+    </div>
+  </body>
+</html>
+
+<script>
+  var counter = {
+    template: `<div>  <h1>{{value}}</h1> 
+    <button v-on:click="value++">Increment</button>
+    <button v-on:click="value--">Decrement</button>
+     </div>`,
+    data: function(){
+        return {
+            value: 0
+        }
+    },
+  };
+
+  var app = new Vue({
+    el: "#app",
+    components: {
+      Counter: counter,
+    },
+  });
+</script>

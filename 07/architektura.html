@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <Neumann v-bind:arch='arr'></Neumann>
+    </div>
+  </body>
+</html>
+
+<script>
+  var neumann = {
+    template: `<div> 
+    <p v-for='el,id in arch' key='idx'>{{el}}</p> </div>`,
+    props: {
+        arch: Array
+    }
+  };
+
+  var app = new Vue({
+    el: "#app",
+    data: {
+        arr: ['Memory', 'Controm Unit', 'Aritmetic Logic Unit',
+   'Processing Unit','Mass Storage', 'Input and output mechanisms'],
+    },
+    components: {
+      Neumann: neumann,
+    }
+  });
+</script>

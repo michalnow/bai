@@ -1,0 +1,54 @@
+<html>
+   <head>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     </head>
+   <body>
+       <div id="app">
+        <Dogs></Dogs>
+        </div>
+   </body>
+</html>
+
+<script>
+var dogs= {  template : `<div><ol><li v-for="dog in dogs">{{dog}}</li></ol></div>`,
+    data: function(){
+        return{
+             dogs: []
+         }   
+    },
+    created: function(){
+        let dogs = []
+        fetch('https://dog.ceo/api/breeds/list/all')
+			.then(
+				function(response) {
+				if (response.status !== 200) {
+					console.log('Looks like there was a problem. Status Code: ' +
+					response.status);
+					return;
+				}
+
+				// Examine the text in the response
+				response.json().then(function(data) {
+                    //console.log(Object.keys(data.message))
+                    Object.keys(data.message).map(bread =>{
+                        dogs.push(bread)
+                    })
+                    
+					
+				});
+				}
+			)
+			.catch(function(err) {
+				console.log('Fetch Error :-S', err);
+            });
+            this.dogs = dogs
+    }
+}
+
+var app = new Vue({
+   el: '#app',
+   components: {
+       "Dogs": dogs
+   }
+});
+</script>

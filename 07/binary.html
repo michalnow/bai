@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <Bin v-for="num,idx in numbers" key="idx" v-bind:decimal="num"></Bin>
+    </div>
+  </body>
+</html>
+
+<script>
+  var bin = {
+    template: `<div> 
+    <p>{{decimal}} (10) = {{parseBinary}} (2)</p> </div>`,
+    props: {
+        decimal: Number
+    },
+    computed: {
+       parseBinary: function(){
+           return Number(this.decimal).toString(2)
+       }
+   }
+  };
+
+  var app = new Vue({
+    el: "#app",
+    data: {
+      numbers: [8,170,204,3855]
+    },
+    components: {
+      Bin: bin,
+    }
+  });
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <Films v-bind:films='arr'></Films>
+    </div>
+  </body>
+</html>
+
+<script>
+  var Films = {
+    template: `<div> 
+    <p v-for='film,id in films' key='idx'>{{film.title}} ; director: {{film.director}} ; year: {{film.year}}</p> </div>`,
+    props: {
+        films: Array
+    }
+  };
+
+  var app = new Vue({
+    el: "#app",
+    data: {
+      arr: [{title: 'Pulp Fiction', year: '1999', director: 'Cameron'},
+        {title: 'The Dark Knight', year: '1999', director: 'Cameron'},
+        {title: 'Interstellar', year: '1999', director: 'Cameron'}]
+    },
+    components: {
+      Films: Films,
+    }
+  });
+</script>
